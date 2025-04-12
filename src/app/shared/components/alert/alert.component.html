@@ -1,0 +1,29 @@
+<!-- Alerta Emergente Interactivo -->
+<div
+  class="container-alerta-interactivo"
+  id="closealertcontainer"
+  (click)="closeAlert()"
+  style="display: none"
+>
+  <div class="container-alerta-govco" id="closealert">
+    <div
+      class="alert alerta-govco"
+      [ngClass]="
+        type === 'error'
+          ? 'alerta-error-govco aerror'
+          : 'alerta-success-govco asuccess'
+      "
+      role="alert"
+    >
+      <span
+        class="alerta-icon-govco"
+        [ngClass]="
+          type === 'error'
+            ? 'alerta-icon-error-govco aerror'
+            : 'alerta-icon-success-govco asuccess'
+        "
+      ></span>
+      <p class="alerta-content-text">{{ message }}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-6">
+        <h1 class="h1-tipografia-govco">
+          {{ editing ? 'Editar publicación' : 'Nueva publicación' }}
+        </h1>
+      
+        <form [formGroup]="postForm" (ngSubmit)="save()">
+          <div class="entradas-de-texto-govco">
+            <label for="user_id">Usuario ID *</label>
+            <input
+              class="form-control"
+              formControlName="user_id"
+              type="number"
+              id="user_id"
+              placeholder="Ingresa ID User"
+            />
+          </div>
+          <div
+            class="text-danger"
+            *ngIf="
+              postForm.get('user_id')?.invalid && postForm.get('user_id')?.touched
+            "
+          >
+            Este campo es requerido
+          </div>
+      
+          <div class="entradas-de-texto-govco">
+            <label for="title">Título *</label>
+            <input
+              class="form-control"
+              formControlName="title"
+              type="text"
+              id="title"
+              placeholder="Ingresa el título"
+            />
+          </div>
+          <div
+            class="text-danger"
+            *ngIf="postForm.get('title')?.invalid && postForm.get('title')?.touched"
+          >
+            Título requerido (máximo 100 caracteres)
+          </div>
+      
+          <div class="entradas-de-texto-govco">
+            <label for="body">Contendio *</label>
+            <textarea
+              class="form-control"
+              formControlName="body"
+              type="text"
+              id="body"
+              placeholder="Ingresa el contenido"
+              rows="4"
+            ></textarea>
+          </div>
+          <div
+            class="text-danger"
+            *ngIf="postForm.get('body')?.invalid && postForm.get('body')?.touched"
+          >
+            Este campo es requerido
+          </div>
+      
+          <!-- <button class="btn btn-success" type="submit" [disabled]="postForm.invalid">Guardar</button> -->
+          <div class="my-4">
+            <button
+              type="submit"
+              [disabled]="postForm.invalid"
+              class="btn-govco fill-btn-govco"
+              style="width: 165px; height: 42px"
+            >
+              Guardar
+            </button>
+            <button
+              type="button"
+              routerLink="/"
+              class="btn-govco outline-btn-govco mx-4"
+              style="width: 165px; height: 42px"
+            >
+              Volver
+            </button>
+            <button
+              *ngIf="status"
+              type="button"
+              routerLink="/"
+              class="btn-govco outline-btn-govco"
+              style="width: 165px; height: 42px"
+            >
+              Ver listado
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+<app-alert></app-alert>

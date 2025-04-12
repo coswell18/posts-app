@@ -1,0 +1,18 @@
+.buttons-table-q {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 992px) {
+  .buttons-table-q {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    button {
+      margin-bottom: 10px;
+      width: 70%;
+    }
+  }
+}
